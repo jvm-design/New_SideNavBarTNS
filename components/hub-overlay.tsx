@@ -81,11 +81,11 @@ function HubCard({ title, category, projectCount, bgMedia, mediaType = "video", 
       </div>
 
       {/* Workflow Cards */}
-      <div className="flex-1 relative min-h-[98px] w-full z-10 flex items-end pb-4">
+      <div className="absolute bottom-0 left-0 right-0 h-[98px] z-10">
         {workflows.map((workflow, index) => (
           <motion.div
             key={index}
-            className="absolute bg-[rgba(16,17,18,0.85)] backdrop-blur-sm bottom-4 h-[140px] overflow-visible rounded-[12px] shadow-[0px_4.668px_25.676px_0px_rgba(0,0,0,0.5)] w-[130px]"
+            className="absolute bg-[rgba(16,17,18,0.85)] backdrop-blur-sm bottom-[-51.5px] h-[172px] overflow-clip rounded-[12px] shadow-[0px_4.668px_25.676px_0px_rgba(0,0,0,0.5)] w-[130px]"
             animate={{
               y: isHovered ? -12 : 0,
               right:
@@ -106,10 +106,10 @@ function HubCard({ title, category, projectCount, bgMedia, mediaType = "video", 
               ease: appleEasing,
             }}
           >
-            <div className="absolute left-1/2 top-[32px] translate-x-[-50%] text-pink-400">
+            <div className="absolute left-1/2 top-[calc(50%-34px)] translate-x-[-50%] translate-y-[-50%] text-pink-400">
               {workflow.icon}
             </div>
-            <div className="absolute content-stretch flex flex-col items-center left-1/2 overflow-clip top-[92px] translate-x-[-50%] w-[126px]">
+            <div className="absolute content-stretch flex flex-col items-center left-1/2 overflow-clip top-[88px] translate-x-[-50%] w-[126px]">
               <div className="text-shadow-sm flex flex-col font-normal justify-center leading-[0] relative shrink-0 text-[#fefefe] text-[14px] text-nowrap uppercase">
                 <p className="leading-[normal] whitespace-pre">{workflow.label}</p>
               </div>
