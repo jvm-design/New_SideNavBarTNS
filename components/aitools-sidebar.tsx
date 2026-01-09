@@ -82,20 +82,28 @@ function SidebarBtn({ icon, label, isActive = false, onClick }: SidebarBtnProps)
 
         {/* Content layer */}
         <div className="flex flex-col items-center justify-center size-full relative">
-          <div className="box-border content-stretch flex flex-col gap-[4px] items-center justify-center p-[12px] relative size-full">
+          <div className="box-border content-stretch flex flex-col gap-[4px] items-center justify-center p-[12px] relative size-full font-light">
             <div
-              className={`transition-all duration-300 ${
+              className={`transition-all ${
                 showActiveOrHover
-                  ? "[&_svg_path]:stroke-[#fefefe]"
-                  : "[&_svg_path]:stroke-[#5f707b]"
+                  ? "[&_svg]:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] [&_svg_path]:stroke-[#fefefe] [&_svg_path[fill='currentColor']]:fill-[#fefefe] [&_svg_path[fill='currentColor']]:stroke-none"
+                  : "[&_svg_path]:stroke-[rgba(255,255,255,0.4)] [&_svg_path[fill='currentColor']]:fill-[rgba(255,255,255,0.4)] [&_svg_path[fill='currentColor']]:stroke-none"
               }`}
+              style={{
+                transitionDuration: "var(--timing-standard)",
+                transitionTimingFunction: "var(--ease-apple)"
+              }}
             >
               {icon}
             </div>
             <p
-              className={`font-semibold leading-[normal] not-italic relative shrink-0 text-[12px] text-nowrap whitespace-pre transition-colors duration-300 ${
-                showActiveOrHover ? "text-[#fefefe]" : "text-[#5f707b]"
+              className={`font-medium leading-[normal] not-italic relative shrink-0 text-[11px] text-nowrap whitespace-pre transition-colors ${
+                isActive ? "text-white" : isHovered ? "text-white/70" : "text-white/40"
               }`}
+              style={{
+                transitionDuration: "var(--timing-standard)",
+                transitionTimingFunction: "var(--ease-apple)"
+              }}
             >
               {label}
             </p>
@@ -159,7 +167,7 @@ function HomeButton({ activeTab, setActiveTab }: HomeButtonProps) {
 
         {/* Content layer */}
         <div className="flex flex-col items-center justify-center size-full relative">
-          <div className="box-border content-stretch flex flex-col gap-[4px] items-center justify-center p-[12px] relative size-full">
+          <div className="box-border content-stretch flex flex-col gap-[4px] items-center justify-center p-[12px] relative size-full font-light">
             <Logo />
             <p className="font-semibold leading-[normal] not-italic relative shrink-0 text-[#fefefe] text-[12px] text-nowrap whitespace-pre">
               HOME
@@ -198,7 +206,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 fill="none"
               />
               <path
@@ -206,7 +214,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 fill="none"
               />
             </svg>
@@ -230,7 +238,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 fill="none"
               />
               <path
@@ -238,28 +246,28 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
               />
               <path
                 d="M19 17V21"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
               />
               <path
                 d="M3 5H7"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
               />
               <path
                 d="M17 19H21"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
+                strokeWidth="1.5"
               />
             </svg>
           </div>
@@ -277,10 +285,10 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
               preserveAspectRatio="none"
               viewBox="0 0 24 24"
             >
-              <path d={svgPaths.p801d400} stroke="currentColor" strokeWidth="1.8" fill="none" />
-              <path d={svgPaths.p353ae460} stroke="currentColor" strokeWidth="1.8" fill="none" />
-              <path d={svgPaths.p37b28a00} stroke="currentColor" strokeWidth="1.8" fill="none" />
-              <path d={svgPaths.p17356800} stroke="currentColor" strokeWidth="1.8" fill="none" />
+              <path d={svgPaths.p801d400} stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <path d={svgPaths.p353ae460} stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <path d={svgPaths.p37b28a00} stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <path d={svgPaths.p17356800} stroke="currentColor" strokeWidth="1.5" fill="none" />
               <path d={svgPaths.p262a0500} fill="currentColor" />
             </svg>
           </div>
@@ -321,7 +329,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeMiterlimit="10"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 fill="none"
               />
               <path
@@ -330,7 +338,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeMiterlimit="10"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 fill="none"
               />
               <path
@@ -339,7 +347,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeMiterlimit="10"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 fill="none"
               />
               <path
@@ -348,7 +356,7 @@ function Nav({ activeTab, setActiveTab }: NavProps) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeMiterlimit="10"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
               />
             </svg>
           </div>
@@ -376,30 +384,15 @@ export function AiToolsSidebar({
 
   return (
     <div
-      className="backdrop-blur-md backdrop-filter bg-black box-border content-stretch flex flex-col h-screen items-center justify-between px-[8px] py-[24px] relative shrink-0 w-[72px] border-r-[0.33px] border-r-black z-[55]"
+      className="backdrop-blur-md backdrop-filter bg-black box-border content-stretch flex flex-col h-screen items-center justify-between px-[8px] py-[24px] relative shrink-0 w-[72px] z-[55]"
       data-name="Nav"
-      style={{
-        borderImage: "linear-gradient(0deg, rgba(174, 205, 225, 0) 2%, rgba(174, 205, 225, 0.16) 11%, rgba(95, 112, 123, 1) 20%, rgba(95, 112, 123, 1) 78%, rgba(174, 205, 225, 0.16) 87%, rgba(174, 205, 225, 0) 97%) 1",
-        borderTopWidth: "0px",
-        borderTopStyle: "none",
-        borderTopColor: "rgba(0, 0, 0, 0)",
-        borderBottomWidth: "0px",
-        borderBottomStyle: "none",
-        borderBottomColor: "rgba(0, 0, 0, 0)",
-        borderLeftWidth: "0px",
-        borderLeftStyle: "none",
-        borderLeftColor: "rgba(0, 0, 0, 0)",
-        borderRightWidth: "0.33px",
-        borderRightColor: "rgba(0, 0, 0, 1)",
-      }}
     >
+      {/* AITools Border Gradient (TNS Spec) */}
       <div
         aria-hidden="true"
-        className="absolute border-[0px_0.33px_0px_0px] border-solid inset-0 pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-[1px] pointer-events-none"
         style={{
-          borderImageSource:
-            "linear-gradient(180deg, rgba(95, 112, 123, 0) 0%, rgba(95, 112, 123, 0.15) 25.52%, rgba(95, 112, 123, 0.15) 77.6%, rgba(95, 112, 123, 0) 100%)",
-          borderImageSlice: 1,
+          background: "var(--border-gradient-ai)"
         }}
       />
       <div className="content-stretch flex flex-col gap-[4px] items-center justify-end relative shrink-0 w-full">
@@ -454,7 +447,7 @@ export function AiToolsSidebar({
               <path
                 d="M18 6L6 18M6 6L18 18"
                 stroke="#FFFFFF"
-                strokeWidth="2"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />

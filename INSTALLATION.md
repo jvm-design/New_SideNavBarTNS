@@ -392,3 +392,5 @@ After installation, you can:
 
 Enjoy your new sidebar! 🚀
 
+
+

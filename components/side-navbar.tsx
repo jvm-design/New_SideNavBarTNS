@@ -58,11 +58,11 @@ export function SideNavbar({ className }: SideNavbarProps) {
         className
       )}
     >
-      {/* Right edge gradient stroke */}
+      {/* Right edge gradient stroke - Violet theme (TNS Spec) */}
       <div 
-        className="absolute right-0 top-0 bottom-0 w-[1px] pointer-events-none"
+        className="absolute right-0 top-0 bottom-0 w-[1px] pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(174,205,225,0.3) 20%, rgba(174,205,225,0.5) 40%, rgba(174,205,225,0.3) 60%, rgba(174,205,225,0.1) 80%, rgba(255,255,255,0) 100%)'
+          background: 'var(--border-gradient-main)'
         }}
       />
       {/* Header */}
@@ -168,19 +168,137 @@ export function SideNavbar({ className }: SideNavbarProps) {
         ))}
       </div>
 
-      {/* User Profile Section */}
-      {!isCollapsed && (
-        <div className="p-4 border-t border-slate-700 bg-slate-800/50">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center font-bold">
+      {/* User Profile Section - TNS Compliant */}
+      {isCollapsed ? (
+        <button
+          onClick={() => setActiveItem("UserProfile")}
+          className={cn(
+            "w-full p-3 border-t flex items-center justify-center transition-all relative overflow-hidden group",
+            activeItem === "UserProfile"
+              ? "bg-slate-800/80 border-white/10"
+              : "bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 hover:border-white/[0.07]"
+          )}
+          style={{
+            transitionDuration: "var(--timing-standard)",
+            transitionTimingFunction: "var(--ease-apple)",
+          }}
+        >
+          {/* Avatar - Collapsed State */}
+          <div
+            className={cn(
+              "w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center font-bold text-white text-xs transition-all ring-2",
+              activeItem === "UserProfile"
+                ? "ring-white/20 scale-105 shadow-lg"
+                : "ring-transparent group-hover:ring-white/10 group-hover:scale-[1.02]"
+            )}
+            style={{
+              transitionDuration: "var(--timing-standard)",
+              transitionTimingFunction: "var(--ease-apple)",
+            }}
+          >
+            JD
+          </div>
+        </button>
+      ) : (
+        <button
+          onClick={() => setActiveItem("UserProfile")}
+          className={cn(
+            "w-full p-4 border-t transition-all relative overflow-hidden group",
+            activeItem === "UserProfile"
+              ? "bg-slate-800/80 border-white/10"
+              : "bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 hover:border-white/[0.07]"
+          )}
+          style={{
+            transitionDuration: "var(--timing-standard)",
+            transitionTimingFunction: "var(--ease-apple)",
+          }}
+        >
+          {/* Hover/Active Gradient Overlay */}
+          <div
+            className={cn(
+              "absolute inset-0 opacity-0 pointer-events-none transition-opacity",
+              activeItem === "UserProfile"
+                ? "opacity-100"
+                : "group-hover:opacity-50"
+            )}
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%)",
+              transitionDuration: "var(--timing-standard)",
+              transitionTimingFunction: "var(--ease-apple)",
+            }}
+          />
+
+          <div className="flex items-center space-x-3 relative z-10">
+            {/* Avatar */}
+            <div
+              className={cn(
+                "w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center font-bold text-white text-sm transition-all ring-2",
+                activeItem === "UserProfile"
+                  ? "ring-white/20 scale-105 shadow-lg"
+                  : "ring-transparent group-hover:ring-white/10 group-hover:scale-[1.02]"
+              )}
+              style={{
+                transitionDuration: "var(--timing-standard)",
+                transitionTimingFunction: "var(--ease-apple)",
+              }}
+            >
               JD
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">John Doe</p>
-              <p className="text-xs text-slate-400 truncate">john@example.com</p>
+
+            {/* User Info */}
+            <div className="flex-1 min-w-0 text-left">
+              <p
+                className={cn(
+                  "text-sm font-medium truncate transition-all",
+                  activeItem === "UserProfile"
+                    ? "text-white"
+                    : "text-white/70 group-hover:text-white/90"
+                )}
+                style={{
+                  transitionDuration: "var(--timing-standard)",
+                  transitionTimingFunction: "var(--ease-apple)",
+                }}
+              >
+                John Doe
+              </p>
+              <p
+                className={cn(
+                  "text-xs truncate transition-all",
+                  activeItem === "UserProfile"
+                    ? "text-white/70"
+                    : "text-white/40 group-hover:text-white/60"
+                )}
+                style={{
+                  transitionDuration: "var(--timing-standard)",
+                  transitionTimingFunction: "var(--ease-apple)",
+                }}
+              >
+                john@example.com
+              </p>
+            </div>
+
+            {/* Active Indicator / Chevron */}
+            <div
+              className={cn(
+                "transition-all",
+                activeItem === "UserProfile"
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-2 group-hover:opacity-40 group-hover:translate-x-0"
+              )}
+              style={{
+                transitionDuration: "var(--timing-standard)",
+                transitionTimingFunction: "var(--ease-apple)",
+              }}
+            >
+              <ChevronRight 
+                size={16} 
+                className="text-white"
+                strokeWidth={1.5}
+              />
             </div>
           </div>
-        </div>
+        </button>
       )}
     </div>
   );
